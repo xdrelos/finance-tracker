@@ -18,5 +18,6 @@ module FinanceTracker
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    Rails.application.config.action_controller.include_all_helpers = true
   end
 end
