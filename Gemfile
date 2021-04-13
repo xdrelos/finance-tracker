@@ -25,6 +25,7 @@ gem 'devise-i18n'
 gem 'bootstrap-sass'
 gem 'devise-bootstrap-views'
 gem 'active_link_to'
+gem 'iex-ruby-client'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
