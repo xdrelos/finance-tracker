@@ -22,6 +22,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'devise-i18n'
+gem 'bootstrap-sass'
 gem 'devise-bootstrap-views'
 gem 'active_link_to'
 # Use Active Storage variant
