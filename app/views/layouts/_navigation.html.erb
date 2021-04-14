@@ -10,7 +10,7 @@
           <%= active_link_to 'Home', root_path, class: "nav-link ", active: :exclusive %>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="#">Link</a>
+          <%= active_link_to 'My Portfolio', my_portfolio_path, class: "nav-link ", active: :exclusive %>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -27,10 +27,26 @@
           <a class="nav-link disabled " href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
       </ul>
+      <!--
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-primary " type="submit">Search</button>
       </form>
+      -->
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bi bi-person-lines-fill fs-3"></i> &nbsp;Account 
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <% if user_signed_in? %>
+            <li><%= link_to 'Edit profile', edit_user_registration_path, class: "dropdown-item" %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+          <% else %>
+            <li><%= link_to 'Log in', new_user_session_path, class: "dropdown-item" %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
