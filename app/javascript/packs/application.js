@@ -15,3 +15,18 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+$(document).on("turbolinks:load", () => {
+  // hide spinner
+  $(".spinner-border").hide();
+
+  // show spinner on AJAX start
+  $(document).ajaxStart(function(){
+    $(".spinner-border").show();
+  });
+
+  // hide spinner on AJAX stop
+  $(document).ajaxStop(function(){
+    $(".spinner-border").delay(3000).hide();
+  });
+});
