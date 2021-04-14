@@ -1,0 +1,15 @@
+<% if @stock %>
+  <div class="card text-center mt-4 col-3">
+    <div class="card-header">
+      <strong>Symbol:</strong> <%= @stock.ticker %>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= @stock.name %></h5>
+      <p class="card-text">Price: <%= @stock.last_price %></p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+    <div class="card-footer text-muted">
+      <%= @article ? time_ago_in_words(@stock.created_at): "Not yet recorded." %>
+    </div>
+  </div>
+<% end %>

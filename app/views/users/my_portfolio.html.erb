@@ -1,7 +1,6 @@
 <h1>My Portfolio</h1>
-
 <h3 class="pt-3">Search Stocks</h3>
-<%= form_tag search_stock_path, method: :get do %>
+<%= form_tag my_portfolio_search_stock_path, remote: true, method: :get do %>
   <div class="form-group row">
     <div class="col-3 no-right-padding">
       <%= text_field_tag :stock, params[:stock], placeholder: "Stock ticker symbol", 
@@ -14,3 +13,6 @@
     </div>
   </div>
 <% end %>
+<div id="search-result">
+
+</div>
