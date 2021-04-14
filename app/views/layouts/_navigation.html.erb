@@ -33,20 +33,22 @@
         <button class="btn btn-outline-primary " type="submit">Search</button>
       </form>
       -->
-      <div class="dropdown">
-        <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="bi bi-person-lines-fill fs-3"></i> &nbsp;Account 
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <% if user_signed_in? %>
+      <% if user_signed_in? %>
+        <div class="dropdown">
+          <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-lines-fill fs-3"></i> &nbsp;Account 
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><%= link_to 'Edit profile', edit_user_registration_path, class: "dropdown-item" %></li>
             <li><hr class="dropdown-divider"></li>
             <li><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
-          <% else %>
-            <li><%= link_to 'Log in', new_user_session_path, class: "dropdown-item" %></li>
-          <% end %>
-        </ul>
-      </div>
+          </ul>
+        </div>
+      <% end %>
+      <% if !user_signed_in? %>
+        <%= link_to 'Log in', new_user_session_path, class: "btn btn-outline-success me-2" %>
+        <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-outline-success"%>
+      <% end %>
     </div>
   </div>
 </nav>
