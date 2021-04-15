@@ -2,14 +2,15 @@
   <%= render 'layouts/messages' %>
 </div>
 <% if @stock %>
-  <div class="card text-center mt-2 col-3">
+  <div class="card text-center col-6">
     <div class="card-header">
       <strong>Symbol:</strong> <%= @stock.ticker %>
     </div>
     <div class="card-body">
       <h5 class="card-title"><%= @stock.name %></h5>
       <p class="card-text">Price: <%= @stock.last_price %></p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <%= link_to 'Follow', user_stocks_path(user:current_user, ticker: @stock.ticker), 
+                    class: 'btn btn-primary', method: :post %>
     </div>
     <div class="card-footer text-muted">
       <%= @article ? time_ago_in_words(@stock.created_at): "Not yet recorded." %>
