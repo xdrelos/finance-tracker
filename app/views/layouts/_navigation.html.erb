@@ -37,19 +37,27 @@
       -->
         <% if user_signed_in? %>
           
-            <ul class="navbar-nav me-0 mb-2 mb-lg-0">
-              <li class="nav-item">
-                Welcome <%= current_user.full_name %>
-              </li>
-            </ul>
+
             <div class="dropdown">
               <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-person-lines-fill fs-5"></i>&nbsp;Account 
+                <i class="bi bi-person-lines-fill fs-5"></i>&nbsp;<%= current_user.full_name %> 
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><%= link_to 'Edit profile', edit_user_registration_path, class: "dropdown-item" %></li>
+                <li>
+                  <%= link_to user_path(current_user), class: "dropdown-item" do %>
+                    <i class="bi bi-person"></i> View profile
+                  <% end %>
+                <li>
+                  <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
+                    <i class="bi bi-pencil-square"></i> Edit profile
+                  <% end %>
+                </li>
                 <li><hr class="dropdown-divider"></li>
-                <li><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+                <li>
+                  <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item"  do %>
+                    <i class="bi bi-box-arrow-left"></i> Log out
+                  <% end %>
+                </li>
               </ul>
             </div>
           
