@@ -17,7 +17,7 @@
               <td><%= stock.name %></td>
               <td><%= stock.last_price %></td>
               <td>
-                <a href="#" class="btn btn-primary">Unfollow</a>
+                <%= link_to 'Unfollow', user_stock_path(stock), method: :delete, class: "btn btn-sm btn-warning", data: {confirm: "Do you want to stop to track this stock?"} %>
               </td>
             </tr>
           <% end %>

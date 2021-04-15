@@ -1,4 +1,4 @@
-<div class="col-3 mt-2">
+<div class="col-6 mt-2">
   <%= render 'layouts/messages' %>
 </div>
 <% if @stock %>
@@ -9,11 +9,22 @@
     <div class="card-body">
       <h5 class="card-title"><%= @stock.name %></h5>
       <p class="card-text">Price: <%= @stock.last_price %></p>
-      <%= link_to 'Follow', user_stocks_path(user:current_user, ticker: @stock.ticker), 
+      <% if current_user.can_track_stock?(@stock.ticker) %>
+        <%= link_to 'Follow', user_stocks_path(user:current_user, ticker: @stock.ticker), 
                     class: 'btn btn-primary', method: :post %>
+      <% else %>
+        <span class="badge bg-secondary">
+          You are already tracking
+          <% if !current_user.under_stock_limit? %>
+          10 stocks.
+          <% elsif current_user.stock_already_tracked?(@stock.ticker)%>
+          this stock.
+          <% end %>
+        </span>
+      <% end %>
     </div>
     <div class="card-footer text-muted">
-      <%= @article ? time_ago_in_words(@stock.created_at): "Not yet recorded." %>
+      <em>Provided by <a href="https://iexcloud.io" target="_blank">IEX Cloud</a></em>
     </div>
   </div>
 <% end %>
