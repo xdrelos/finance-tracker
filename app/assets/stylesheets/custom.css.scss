@@ -33,4 +33,9 @@ body {
   flex-shrink: none;
 }
 
-
+#jumbotron {
+  background: linear-gradient( rgba(27, 27, 27, 0.5), rgba(216, 204, 204, 0.5) ), asset_url('finance-jumbotron.jpeg');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}

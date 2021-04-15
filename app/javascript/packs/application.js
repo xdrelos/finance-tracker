@@ -29,4 +29,8 @@ $(document).on("turbolinks:load", () => {
   $(document).ajaxStop(function(){
     $(".spinner-border").delay(3000).hide();
   });
+  //auto hide alert messages
+  $(".alert").delay(3000).slideUp(500, function(){
+    $(".alert").alert('close');
+  });
 });
