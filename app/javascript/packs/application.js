@@ -16,20 +16,15 @@ Turbolinks.start()
 ActiveStorage.start()
 
 $(document).on("turbolinks:load", () => {
-  // hide spinner
   $(".spinner-border").hide();
 
-  // show spinner on AJAX start
-  $(document).ajaxStart(function(){
-    $(".spinner-border").show();
+  $(document).on('ajax:send', function() {
+    $('.spinner-border').show();
   });
 
-  // hide spinner on AJAX stop
-  $(document).ajaxStop(function(){
-    $(".spinner-border").delay(3000).hide();
+  $(document).on('ajax:complete', function(){
+    setTimeout(() => {$('.spinner-border').hide();}, 100);
   });
   //auto hide alert messages
-  $(".alert").delay(3000).slideUp(500, function(){
-    $(".alert").alert('close');
-  });
+  $(".alert").delay(3000).slideUp(500);
 });

@@ -1,0 +1,31 @@
+<div class="results-block">
+  <%= render 'layouts/messages' %>
+</div>
+<% if @friends %>
+  <% @friends.each do |friend| %>
+    <div class="card text-center col-6 mb-2">
+      <div class="card-header">
+        <%= friend.username %>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><%= friend.full_name %></h5>
+        <p class="card-text"><%= friend.email %></p>
+        
+      </div>
+      <div class="card-footer text-muted">
+        <%= link_to "View", user_path(friend),
+                              class: "btn btn-sm btn-success" %>
+        <% if current_user.not_friends_with?(friend.id) %>
+          <%= link_to 'Follow', friendships_path(friend: friend),
+                              class: "btn btn-sm btn-primary", method: :post %>
+        <% else %>
+          <span class="badge bg-secondary">
+            You are already friends.
+          </span>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  No friends found.
+<% end %>

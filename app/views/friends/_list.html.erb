@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-9">
+    <% if !@tracked_friends.empty? %>
+      <table class="table table-hover table-bordered">
+        <thead>
+          <tr class="table-light">
+            <th scope="col">Username</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%  @tracked_friends.each do |friend|%>
+            <tr>
+              <th scope="row"><%= friend.username %></th>
+              <td><%= friend.first_name %></td>
+              <td><%= friend.last_name %></td>
+              <td><%= friend.email %></td>
+              <td>
+              <%= link_to 'View', user_path(friend), class: 'btn btn-sm btn-primary' %>
+              <%= link_to 'Unfollow', friendship_path(friend), method: :delete, data: {confirm: 'Are you sure?'},
+                                          class: 'btn btn-sm btn-warning' %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>No friends followed.</p>
+    <% end %>
+  </div>
+</div>

@@ -30,6 +30,7 @@ body {
 }
 
 #sticky-footer {
+  margin-top: 10px;
   flex-shrink: none;
 }
 
@@ -38,4 +39,16 @@ body {
   background-position: top;
   background-repeat: no-repeat;
   background-size: 100% 100%;
+}
+.spinner-border {
+  display: block;
+  position: fixed;
+  z-index: 1031; /* High z-index so it is on top of the page */
+  top: 40%;
+  right: 50%; /* or: left: 50%; */
+  margin-top: -5px; /* half of the elements height */
+  margin-right: -5px; /* half of the elements widht */
+  font-size:20px;
+  height: 100px;
+  width: 100px;
 }
