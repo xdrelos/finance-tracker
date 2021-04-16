@@ -20,9 +20,11 @@
     <tr>
       <th scope="row">Action</th>
       <td>
-        <% if current_user.not_friends_with?(@user.id) %>
-          <%= link_to 'Follow', friendships_path(friend: @user),
+        <% if current_user.not_friends_with?(@user.id)  %>
+          <% if current_user != @user %>%
+            <%= link_to 'Follow', friendships_path(friend: @user),
                           class: "btn btn-sm btn-success", method: :post %>
+          <% end %>
         <% else %>
           <span class="badge bg-secondary">
             You are friends.
@@ -33,10 +35,11 @@
   </tbody>
 </table>
 <% if current_user == @user %>
+<div class="mb-3">
   <%= link_to 'Edit profile', edit_user_registration_path, class: "btn btn-outline-success" %>
   <%= link_to 'Delete profile', registration_path(@user), class: "btn btn-outline-danger", data: { confirm: 'Are you sure?' }, method: :delete %>
+</div>
 <% end %>
-
 <% if !@tracked_stocks.empty? %>
   <%= render 'stocks/list'%>
 <% else %>
